@@ -21,8 +21,8 @@ fi
 
 if [ -n "$SSH_PRIVATE_KEY" ]; then
   eval $(ssh-agent -s)
-  echo -ne "$SSH_PRIVATE_KEY"
-  echo -ne "$SSH_PRIVATE_KEY" | base64
+  echo "$SSH_PRIVATE_KEY"
+  echo "$SSH_PRIVATE_KEY" | base64
   echo -ne "$SSH_PRIVATE_KEY" | base64 -d | tr -d '\r' | ssh-add -
   echo -ne "$SSH_PRIVATE_KEY" | base64 -d > /root/.ssh/id_rsa
   chmod 400 /root/.ssh/id_rsa
