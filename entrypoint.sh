@@ -20,7 +20,7 @@ if [ -n "$NPM_AUTH_TOKEN" ]; then
 fi
 
 if [ -n "$SSH_PRIVATE_KEY" ]; then
-  
+  eval $(ssh-agent -s)
   echo -ne "$SSH_PRIVATE_KEY" | base64 -d | tr -d '\r' | ssh-add -
   echo -ne "$SSH_PRIVATE_KEY" | base64 -d > /root/.ssh/id_rsa	  echo -ne "$SSH_PRIVATE_KEY" | base64 -d > /root/.ssh/id_rsa
   chmod 400 /root/.ssh/id_rsa
