@@ -23,7 +23,7 @@ if [ -n "$SSH_PRIVATE_KEY" ]; then
   eval $(ssh-agent -s)
   echo "$SSH_PRIVATE_KEY"
   echo "\n\n\n\n QUEBRA"
-  echo -ne "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  echo -ne "$SSH_PRIVATE_KEY" | ssh-add -
   echo -ne "$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa
   chmod 400 /root/.ssh/id_rsa
   ssh-keygen -y -f /root/.ssh/id_rsa > /root/.ssh/id_rsa.pub
